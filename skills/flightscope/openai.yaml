@@ -1,3 +1,0 @@
-interface:
-  display_name: "FlightScope"
-  short_description: "Live flight tracking by flight number, batch lookup for 100 flights in one call, aircraft near any point, and airport profiles."
