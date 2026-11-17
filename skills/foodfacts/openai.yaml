@@ -1,3 +1,0 @@
-interface:
-  display_name: "FoodFacts"
-  short_description: "Barcode nutrition lookup and food search: Nutri-Score, NOVA, ingredients, allergens, and per-100g nutrients from Open Food Facts."
