@@ -1,3 +1,0 @@
-interface:
-  display_name: "NewKwLab Router"
-  short_description: "Auth, hosts, endpoints, parameters, response fields, errors, MCP setup, and billing for the EmailCheck, Page2MD, FoodFacts, and FlightScope APIs on RapidAPI."
