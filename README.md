@@ -176,4 +176,4 @@ All four listing hosts (EmailCheck, FlightScope, Page2MD, FoodFacts) were copied
 
 ## License
 
-MIT — see [LICENSE](LICENSE). The APIs themselves are separate services on RapidAPI; data attributions (Open Food Facts ODbL, adsb.lol ODbL, OurAirports public domain) are carried in each API's responses.
+NewKwLab Skills License — see [LICENSE](LICENSE). Free to install and use (including commercially) for accessing NewKwLab APIs with your own RapidAPI key; modified or repackaged versions may not be pointed at other API providers. The APIs themselves are separate services on RapidAPI; data attributions (Open Food Facts ODbL, adsb.lol ODbL, OurAirports public domain) are carried in each API's responses.
