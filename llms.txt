@@ -77,4 +77,4 @@ Subscribe on a listing (free tiers: EmailCheck 100 calls/mo, FoodFacts 500/mo, F
 
 ## License
 
-MIT
+NewKwLab Skills License v1.0 — free to install and use (including commercially) for accessing NewKwLab APIs with your own RapidAPI key; modified or repackaged versions may not be pointed at other API providers. See LICENSE in the repository.
