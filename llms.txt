@@ -1,0 +1,80 @@
+# NewKwLab Agent Skills
+
+> Agent skills for four NewKwLab APIs on RapidAPI: EmailCheck (email validation and batch list cleaning), Page2MD (web page to Markdown), FoodFacts (barcode nutrition lookup), FlightScope (live flight tracking and airport data)
+
+## Product
+
+NewKwLab Agent Skills — five prompt-driven workflows for Claude, Cursor, and any agent runtime that reads a skills directory: one routing/reference skill plus one use-case skill per API. Every API is subscribed to on RapidAPI with the caller's own key; every call bills against that caller's subscription. There is no shared key.
+
+## What it does
+
+Gives your agent the data and the workflow to answer real questions:
+
+- **EmailCheck**: "Is this email real?" / "Clean this mailing list" → per-address `valid`, `score` (0–100) and `verdict`, with MX, disposable, role-account and typo signals, `domainAgeDays` from RDAP, and a batch endpoint that cleans up to 100 addresses in ONE call with a summary report
+- **Page2MD**: "Turn these links into Markdown notes" → clean Markdown with `title`, `byline`, `excerpt` per URL, single or batch, for RAG ingestion and reading lists
+- **FoodFacts**: "What's in this product?" (barcode 3017620422003) → Nutri-Score, NOVA group, Eco-Score, ingredients, allergens and per-100g nutrients from Open Food Facts; keyword search with a grade filter; category browsing
+- **FlightScope**: "Where is flight TS655 right now?" → airline, aircraft registration and type, and the live ADS-B position (latitude, longitude, altitudeFt, groundSpeedKt, squawk, ageSeconds); batch lookup of 100 flights in one call; aircraft near any point; 3,270 airport profiles
+
+The differentiators are the verdict fields: EmailCheck's score comes with the evidence behind it, FlightScope's positions carry their own freshness (`ageSeconds`), and both batch endpoints turn a 100-item job into a single billed call.
+
+## Install (60 seconds)
+
+### MCP servers (RapidAPI hosted gateway)
+
+One gateway URL — https://mcp.rapidapi.com — serves every API as its own MCP server, selected by the `x-api-host` header, authenticated with the caller's `x-api-key`:
+
+```bash
+claude mcp add --transport http emailcheck https://mcp.rapidapi.com \
+  --header "x-api-host: emailcheck-email-validation-api.p.rapidapi.com" \
+  --header "x-api-key: YOUR_RAPIDAPI_KEY"
+
+claude mcp add --transport http flightscope https://mcp.rapidapi.com \
+  --header "x-api-host: flightscope-live-flight-tracking-and-airport-data-api.p.rapidapi.com" \
+  --header "x-api-key: YOUR_RAPIDAPI_KEY"
+```
+
+Page2MD (host `page2md-url-to-clean-markdown-api.p.rapidapi.com`) and FoodFacts (host `foodfacts-product-nutrition-barcodes-and-food-search.p.rapidapi.com`) use the identical shape; both hosts were copied from their listings' Playground MCP panels and verified with MCP `tools/list` calls on 2026-11-17. Hosts are verified, never guessed.
+
+### Skills (prompt workflows)
+
+```bash
+# Claude Code plugin
+claude plugin marketplace add binbin7418-dotcom/newkwlab-agent-skills
+claude plugin install newkwlab-agent-skills@newkwlab-agent-skills
+
+# Or any agent with a skills directory
+git clone https://github.com/binbin7418-dotcom/newkwlab-agent-skills.git
+cp -r newkwlab-agent-skills/skills/* ~/.claude/skills/
+```
+
+### Get a key
+
+Subscribe on a listing (free tiers: EmailCheck 100 calls/mo, FoodFacts 500/mo, FlightScope 50/mo, Page2MD 100 calls/mo), then use your own RapidAPI key. One key covers every API you subscribe to.
+
+## APIs
+
+| Product | What | Where |
+|---|---|---|
+| EmailCheck | Email validation, batch list cleaning, typo fix, domain age | https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api |
+| Page2MD | Web page to clean Markdown, single and batch | https://rapidapi.com/binbin7418/api/page2md-url-to-clean-markdown-api |
+| FoodFacts | Barcode nutrition lookup and food search (Open Food Facts) | https://rapidapi.com/binbin7418/api/foodfacts-product-nutrition-barcodes-and-food-search |
+| FlightScope | Live flight tracking, batch lookup, airport data (adsb.lol, OurAirports) | https://rapidapi.com/binbin7418/api/flightscope-live-flight-tracking-and-airport-data-api |
+
+## Documentation
+
+- Routing and reference (hosts, auth, endpoints, fields, errors, billing): skills/newkwlab-router/SKILL.md
+- Use-case skills: skills/emailcheck, skills/page2md, skills/foodfacts, skills/flightscope
+- Pre-publish checklist (host backfill gates): TODO.md
+- Publisher: https://newkwlab.com
+
+## Design rules
+
+1. Prefer MCP tools when available; fall back to REST otherwise
+2. Say what a call costs before making it — batch endpoints make a 100-item job cost 1 call
+3. A named error is an answer, not a failure (`FLIGHT_NOT_LIVE`, `PRODUCT_NOT_FOUND`, `BATCH_TOO_LARGE`)
+4. Never print, log, or commit an API key
+5. No invented numbers — samples are real responses, prices are the live listing prices
+
+## License
+
+MIT
