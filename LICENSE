@@ -1,21 +1,31 @@
-MIT License
+NewKwLab Skills License v1.0
 
-Copyright (c) 2026 NewKwLab
+Copyright (c) 2026 NewKwLab. All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+These skill files are published so that you and your AI agents can
+discover, evaluate, and use NewKwLab's APIs (including EmailCheck,
+Page2MD, FoodFacts, and FlightScope, as listed in this repository).
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+You may:
+- Read, copy, and install these files into your own agent tools.
+- Use them, including commercially, to access and call NewKwLab
+  APIs with your own RapidAPI account and API key.
+- Redistribute unmodified copies, as long as this license and the
+  NewKwLab attribution stay attached and the files still direct
+  users to NewKwLab APIs.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+You may not:
+- Modify, adapt, or repackage these files (or derivatives of
+  them) to direct users to any other API provider or competing
+  product.
+- Sell these files, or bundle them into a product that competes
+  with NewKwLab APIs.
+- Remove or alter the NewKwLab attribution, API hosts, or this
+  license.
+
+The APIs themselves are separate services offered on RapidAPI
+under their own plans and terms; this license covers only the
+files in this repository. The files are provided "as is",
+without warranty of any kind, express or implied.
+
+For a license beyond these terms, contact support@newkwlab.com.
